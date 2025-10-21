@@ -152,24 +152,27 @@
         if (token === '√') {
             // Toán tử √ (Tiền tố/Prefix): √ X
             // Do logic hiện tại, nó sẽ xử lý cặp (√, X)
-            const num = parseFloat(exprTokens[i+1]);
+            const nextToken = exprTokens[i + 1];
+            const num = parseFloat(nextToken);
+
             if (num < 0) return NaN;
             
             // Xử lý trường hợp chỉ có √ trong expression
             if (isNaN(num)) {
                 // Ví dụ: chỉ bấm √ và =
-                return 0; // Trả về 0 hoặc lỗi, tùy logic mong muốn
+                return NaN; // Trả về 0 hoặc lỗi, tùy logic mong muốn
             }
             
             finalTokens.push(Math.sqrt(num));
             i++; // Bỏ qua token số sau √
         } else if (token === '%') {
-            // Toán tử % (Hậu tố/Postfix): X % -> X / 100
-            // Tìm số gần nhất trong finalTokens để áp dụng %
             const lastNum = parseFloat(finalTokens.pop());
-            if (isNaN(lastNum)) return NaN;
-            finalTokens.push(lastNum / 100);
-        } else {
+            const prevOp = finalTokens[finalTokens.length - 1];
+            const prevNum = parseFloat(finalTokens[finalTokens.length - 2]);
+            let val = lastNum / 100;
+            if (['+', '−'].includes(prevOp)) val = prevNum * (lastNum / 100);
+            finalTokens.push(val);
+          } else {
             finalTokens.push(token);
         }
     }
