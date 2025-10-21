@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Windows 11 – Basic Calculator (Web)</title>
+  <link rel="stylesheet" href="style.css"/>
+  <meta name="description" content="Web-based calculator replicating Windows 11 Calculator (Basic Mode)."/>
+</head>
+<body>
+  <main class="app" role="application" aria-label="Windows 11 Basic Calculator">
+    <section class="display" aria-live="polite" aria-atomic="true">
+      <div class="history" id="history" aria-label="Expression history"></div>
+      <div class="current" id="current" aria-label="Current value">0</div>
+    </section>
+
+    <section class="keypad" role="group" aria-label="Calculator keypad">
+  <button class="btn btn-fn" data-action="c">C</button>
+  <button class="btn btn-fn" data-action="ce">CE</button>
+  <button class="btn btn-fn" data-action="back" aria-label="Backspace">←</button>
+  <button class="btn btn-op" data-op="÷">÷</button>
+
+  <button class="btn btn-fn" data-action="sqrt">√</button>
+  <button class="btn btn-fn" data-action="negate">±</button>
+  <button class="btn btn-fn" data-action="percent">%</button>
+  <button class="btn btn-op" data-op="×">×</button>
+
+  <button class="btn" data-num="7">7</button>
+  <button class="btn" data-num="8">8</button>
+  <button class="btn" data-num="9">9</button>
+  <button class="btn btn-op" data-op="−">−</button>
+
+  <button class="btn" data-num="4">4</button>
+  <button class="btn" data-num="5">5</button>
+  <button class="btn" data-num="6">6</button>
+  <button class="btn btn-op" data-op="+">+</button>
+
+  <button class="btn" data-num="1">1</button>
+  <button class="btn" data-num="2">2</button>
+  <button class="btn" data-num="3">3</button>
+  <button class="btn btn-eq wide-right" data-action="eq">=</button>
+
+  <button class="btn wide" data-num="0">0</button>
+  <button class="btn" data-num=".">.</button>
+  </section>
+
+    <footer class="meta">
+      <p>Note: Escape(C), Delete(CE)</p>
+      </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
